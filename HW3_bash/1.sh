@@ -4,15 +4,23 @@ touch ./tmp/fib
 echo "1
 1" > ./tmp/fib
 
-if [[ condition ]]; then
-  #statements
+if [[ $# -ne 1 ]]; then
+  echo "ERROR: Wrong amount of arguments" >&2
+  exit 1;
+fi
+
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+   echo "ERROR: Not a number" >&2;
+  exit 1
 fi
 
 for (( n = 2; n < $1; n++ )); do
-    V1=$(cat ./tmp/fib | tail -n2 | sed -n '1p')
-    V2=$(cat ./tmp/fib | tail -n2 | sed -n '2p')
+    V1=$(tail -n2 ./tmp/fib | sed -n '1p')
+    V2=$(tail -n2 ./tmp/fib | sed -n '2p')
     V3=$((V1+V2))
     echo $V3 >> ./tmp/fib
 done
 
-cat ./tmp/fib | tail -n1
+tail -n1 ./tmp/fib
+rm ./tmp/fib
