@@ -11,7 +11,7 @@ fi
 
 re='^[0-9]+$'
 if ! [[ $1 =~ $re ]] ; then
-   echo "ERROR: Not a number" >&2;
+   echo "ERROR: Wrong type input" >&2;
   exit 1
 fi
 
