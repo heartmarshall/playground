@@ -12,7 +12,7 @@ fi
 
 if ! [[ -f ./tmp/stack ]]; then
   if [[ $1 = "pop" ]]; then
-    # echo "ERROR: Can't pop from empty stack" >&2;
+    echo "ERROR: Can't pop from empty stack" >&2;
     exit 1
   fi
   touch ./tmp/stack

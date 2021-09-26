@@ -36,11 +36,12 @@ if [[ $1 = "push" ]]; then # Обработка push-запроса. Снача�
 
 else # Обработка get-запроса.
   if ! [[ $(grep "$2" ./tmp/lru_cache) ]]; then
-    echo
-    exit 0
+    exit 1
   else
+    match=$(grep "$2" ./tmp/lru_cache| head -n1)
     sed -i "$(grep -n "$2" ./tmp/lru_cache | cut -f1 -d':' | head -n1)d" ./tmp/lru_cache
-    echo "$2" >> ./tmp/lru_cache
+    echo "$match" >> ./tmp/lru_cache
+    echo "$match"
   fi
 fi
 
