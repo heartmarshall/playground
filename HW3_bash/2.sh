@@ -15,16 +15,16 @@ if ! [[ -f ./tmp/stack ]]; then
     echo "ERROR: Can't pop from empty stack" >&2;
     exit 1
   fi
-  touch ./tmp/stack
+  touch /tmp/stack
 fi
 
 if [[ $1 = "push" ]]; then
-  echo "$2" >> ./tmp/stack
+  echo "$2" >> /tmp/stack
 else
-  tail -n1 ./tmp/stack | xargs echo
-  sed -i '$ d' ./tmp/stack
-  if [[ $(wc -l ./tmp/stack | cut -f1 -d' ') -eq 0 ]]; then
-    rm ./tmp/stack
+  tail -n1 /tmp/stack | xargs echo
+  sed -i '$ d' /tmp/stack
+  if [[ $(wc -l /tmp/stack | cut -f1 -d' ') -eq 0 ]]; then
+    rm /tmp/stack
   fi
 fi
 
