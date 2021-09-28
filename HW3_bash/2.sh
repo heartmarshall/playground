@@ -10,7 +10,7 @@ if [[ "$1" != "push" && "$1" != "pop" ]] ; then
   exit 1
 fi
 
-if ! [[ -f ./tmp/stack ]]; then
+if ! [[ -f /tmp/stack ]]; then
   if [[ $1 = "pop" ]]; then
     echo "ERROR: Can't pop from empty stack" >&2;
     exit 1
