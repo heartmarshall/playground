@@ -24,3 +24,4 @@ for (( n = 3; n < $1; n++ )); do
 done
 
 sed -n "$1 p" /tmp/fib
+rm /tmp/fib
