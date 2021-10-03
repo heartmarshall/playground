@@ -1,9 +1,9 @@
 #!/bin/bash
 
-curl -fs https://boards.4chan.org/wg/thread/7805996/sailing | grep -Eo --color 'is?2?\.4(chan|cdn)\.org\/wg\/[0-9]*\.(jpg|png)'| xargs wget -q
-mkdir small medium large 3>/dev/null
+curl -fs https://boards.4chan.org/wg/thread/7805996/sailing | grep -Eo --color 'is?2?\.4(chan|cdn)\.org\/wg\/[0-9]*\.(jpg|png)'| sort | uniq | xargs wget -q
+mkdir small medium large 2>/dev/null
 
-for f in $(identify [0-9]*\.{jpg,jpg\.1,png,png\.1} 3>/dev/null| cut -f1,3 -d' ' | tr ' ' ';')
+for f in $(identify [0-9]*\.{jpg,png} 2>/dev/null| cut -f1,3 -d' ' | tr ' ' ';')
 do
   f_name=$(echo "$f" | sed -E 's/;[0-9x]*//')
   f_res=$(echo "$f" | grep -Eo "[0-9]*x[0-9]*" | sed 's/x/\*/')
