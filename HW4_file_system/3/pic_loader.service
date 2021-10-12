@@ -1,0 +1,10 @@
+[Unit]
+Description=load pics from web
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/pic_loader.sh
+
+[Install]
+WantedBy=multi-user.target
+
